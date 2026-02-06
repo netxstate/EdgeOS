@@ -1,4 +1,4 @@
-name: Deploy Dev
+name: Deploy
 
 on:
   push:
@@ -47,5 +47,5 @@ jobs:
       - name: Deploy to Coolify
         run: |
           curl --fail --silent --show-error -X GET \
-            "https://coolify.netxstate.com/api/v1/deploy?uuid=u0wcgc8ccgg4cwcow0o8wk0w&force=false" \
+            "https://coolify.netxstate.com/api/v1/deploy?uuid=p44ogscgswg4o0goc0co4wc0&force=false" \
             -H "Authorization: Bearer ${{ secrets.COOLIFY_DEPLOY_API_TOKEN }}"
