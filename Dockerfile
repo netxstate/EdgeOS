@@ -29,6 +29,19 @@ RUN corepack enable pnpm \
 FROM base AS builder
 WORKDIR /app
 
+# Declarar ARGs que pueden ser pasados en build-time
+# Estos valores se pasarán como --build-arg durante docker build
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_ENVIRONMENT
+ARG NEXT_PUBLIC_DEVELOP
+ARG NEXT_PUBLIC_X_API_KEY
+# Agrega aquí cualquier otro ARG que necesites
+
+# Convertir ARGs a ENVs para que Next.js pueda accederlos durante el build
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_ENVIRONMENT=$NEXT_PUBLIC_ENVIRONMENT
+ENV NEXT_PUBLIC_DEVELOP=$NEXT_PUBLIC_DEVELOP
+ENV NEXT_PUBLIC_X_API_KEY=$NEXT_PUBLIC_X_API_KEY
 ENV SKIP_ENV_VALIDATION=1
 
 # Copiar node_modules desde deps
