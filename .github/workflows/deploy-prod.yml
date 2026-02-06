@@ -35,6 +35,10 @@ jobs:
 
       - name: Build & push image
         uses: docker/build-push-action@v6
+        env:
+          NEXT_PUBLIC_DEVELOP: "false"
+          NEXT_PUBLIC_API_URL: "https://events-api.netxstate.com"
+          NEXT_PUBLIC_X_API_KEY: "test"
         with:
           context: .
           file: Dockerfile
